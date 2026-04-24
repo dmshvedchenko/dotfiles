@@ -2,3 +2,5 @@
 ._*
 *.swp
 *.swo
+lazy-lock.json
+nvim-pack-lock.json
