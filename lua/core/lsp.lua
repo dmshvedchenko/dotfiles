@@ -1,0 +1,10 @@
+vim.lsp.enable({
+    "lua_ls",
+    "bashls",
+    "ansiblels",
+    "pylsp",
+    "awk_ls",
+    "dockerls",
+    "ltex_plus",
+    "systemd_lsp",
+})
