@@ -1,0 +1,43 @@
+term = xterm-256color
+theme = dracula
+
+macos-icon = glass
+
+font-family = Hacker Nerd Font Mono
+font-thicken = true
+font-size = 20
+
+mouse-hide-while-typing = true
+
+window-decoration = true
+
+background-opacity = 0.9
+background-blur-radius = 20
+
+working-directory = home
+tab-inherit-working-directory = false
+window-inherit-working-directory = false
+split-inherit-working-directory = false
+
+quick-terminal-position = top
+quick-terminal-screen = macos-menu-bar
+quick-terminal-autohide = false
+quick-terminal-size = 50%
+
+macos-non-native-fullscreen = visible-menu
+bell-features = no-attention,no-title
+
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+keybind = global:f12=toggle_quick_terminal
+keybind = shift+page_up=scroll_page_up
+keybind = shift+page_down=scroll_page_down
+keybind = shift+home=scroll_to_top
+keybind = shift+end=scroll_to_bottom
+keybind = cmd+enter=toggle_maximize
+scrollbar = system
+scrollback-limit = 0
+window-padding-balance = true
+window-padding-y = 0
