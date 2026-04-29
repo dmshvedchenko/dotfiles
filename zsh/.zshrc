@@ -33,8 +33,8 @@ export DEFAULT_USER="dima"
 
 # Remove old aliases before defining functions.
 # This makes repeated `source ~/.zshrc` safe.
-unalias flushdns icloud kstage kprod tmp officereboot gartenreboot wzreboot flurreboot fritzreboot k9s k9 2>/dev/null
-unfunction flushdns icloud kstage kprod tmp officereboot gartenreboot wzreboot flurreboot fritzreboot k9s k9 2>/dev/null
+unalias flushdns icloud dotfiles kstage kprod tmp officereboot gartenreboot wzreboot flurreboot fritzreboot k9s k9 2>/dev/null
+unfunction flushdns icloud dotfiles kstage kprod tmp officereboot gartenreboot wzreboot flurreboot fritzreboot k9s k9 2>/dev/null
 
 flushdns() {
   sudo killall -HUP mDNSResponder 2>/dev/null
@@ -54,6 +54,10 @@ alias diglocal='dig +short @192.168.178.1'
 
 icloud() {
   cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs/MyFiles/" || return 1
+}
+
+dotfiles() {
+  cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs/MyFiles/CONFIGS/dima/dotfiles" || return 1
 }
 
 kstage() {
