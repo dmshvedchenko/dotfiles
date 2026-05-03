@@ -253,7 +253,8 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 
 export POWERLEVEL9K_MODE='nerdfont-complete'
 export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir vcs custom_activekube)
-export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(rbenv history)
+#export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(rbenv history)
+export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(rbenv)
 
 export POWERLEVEL9K_CUSTOM_ACTIVEKUBE='[[ -n "$ACTIVE_KUBE_ALIAS" ]] && echo -n "$ACTIVE_KUBE_ALIAS"'
 export POWERLEVEL9K_CUSTOM_ACTIVEKUBE_BACKGROUND="024"
