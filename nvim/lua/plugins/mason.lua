@@ -13,10 +13,13 @@ return {
           "lua_ls",
           "bashls",
           "ansiblels",
+          "yamlls",
+          "helm_ls",
           "pylsp",
           "dockerls",
           "ltex_plus",
           "systemd_lsp",
+          "jsonls",
         },
       })
     end,

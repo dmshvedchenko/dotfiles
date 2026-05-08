@@ -2,9 +2,12 @@ vim.lsp.enable({
     "lua_ls",
     "bashls",
     "ansiblels",
+    "yamlls",
+    "helm_ls",
     "pylsp",
     "awk_ls",
     "dockerls",
     "ltex_plus",
     "systemd_lsp",
+    "jsonls",
 })
