@@ -230,7 +230,6 @@ A = 'main'
 # right -> N3 -> Sublime Text
 
 # Floating Windows
-# Telegram -> N2, floating over Safari
 [[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'
 run = [
@@ -238,7 +237,6 @@ run = [
   'move-node-to-workspace N2'
 ]
 
-# Messages -> N2, floating over Safari
 [[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
 run = [
@@ -246,7 +244,6 @@ run = [
   'move-node-to-workspace N2'
 ]
 
-# Things 3 -> N2, floating over Safari
 [[on-window-detected]]
 if.app-id = 'com.culturedcode.ThingsMac'
 run = [
@@ -254,7 +251,6 @@ run = [
   'move-node-to-workspace N2'
 ]
 
-# KeePassium Pro -> N2, floating over Safari
 [[on-window-detected]]
 if.app-id = 'com.keepassium.ios.pro'
 run = [
@@ -262,7 +258,6 @@ run = [
   'move-node-to-workspace N2'
 ]
 
-# Notes -> N2, floating over Safari
 [[on-window-detected]]
 if.app-id = 'com.apple.Notes'
 run = [
@@ -270,7 +265,6 @@ run = [
   'move-node-to-workspace N2'
 ]
 
-# Calendar -> N2, floating over Safari
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
 run = [
@@ -278,7 +272,6 @@ run = [
   'move-node-to-workspace N3'
 ]
 
-# Home -> N2, floating over Safari
 [[on-window-detected]]
 if.app-id = 'com.apple.Home'
 run = [
@@ -286,7 +279,6 @@ run = [
   'move-node-to-workspace N2'
 ]
 
-# Passwords -> N2, floating over Safari
 [[on-window-detected]]
 if.app-id = 'com.apple.Passwords'
 run = [
@@ -294,26 +286,29 @@ run = [
   'move-node-to-workspace N2'
 ]
 
-# Finder -> floating
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
 run = 'layout floating'
 
-# Music -> N2, floating over Safari
 [[on-window-detected]]
 if.app-id = 'com.apple.Music'
 run = [
   'layout floating',
-  'move-node-to-workspace N3'
 ]
 
-# Activity Monitor -> N2, floating over Safari
 [[on-window-detected]]
 if.app-id = 'com.apple.ActivityMonitor'
 run = [
   'layout floating',
-  'move-node-to-workspace N3'
 ]
+
+[[on-window-detected]]
+if.app-id = 'com.apple.AppStore'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Preview'
+run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.teams2'
@@ -327,10 +322,6 @@ run = 'move-node-to-workspace N2'
 if.app-id = 'com.sublimetext.4'
 run = 'move-node-to-workspace N3'
 
-
-# alt+c profile:
-# main  -> C2 -> Firefox
-# right -> C3 -> Slack
 
 [[on-window-detected]]
 if.app-id = 'org.mozilla.firefox'
@@ -352,7 +343,6 @@ run = 'move-node-to-workspace O'
 if.app-id = 'com.openai.chat'
 run = 'move-node-to-workspace A'
 
-# Windows App / Microsoft Remote Desktop -> C1
 [[on-window-detected]]
 if.app-id = 'com.microsoft.rdc.macos'
 run = 'move-node-to-workspace C1'
