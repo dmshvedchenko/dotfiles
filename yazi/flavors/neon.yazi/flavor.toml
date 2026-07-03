@@ -1,0 +1,366 @@
+# Neon - A vibrant Yazi flavor inspired by Tokyo's neon-lit nights
+# Comprehensive file type support with stunning color palette
+
+[mgr]
+cwd = { fg = "#7aa2f7", bold = true }
+
+# Hovered items - high contrast for visibility
+hovered         = { fg = "#1a1b26", bg = "#7aa2f7" }
+preview_hovered = { underline = true }
+
+# Find highlighting
+find_keyword  = { fg = "#e0af68", bg = "#2d3f76", bold = true }
+find_position = { fg = "#bb9af7", italic = true }
+
+# Selection markers
+marker_selected = { fg = "#1a1b26", bg = "#9ece6a" }
+marker_copied   = { fg = "#1a1b26", bg = "#e0af68" }
+marker_cut      = { fg = "#1a1b26", bg = "#f7768e" }
+
+# Border
+border_symbol = "│"
+border_style  = { fg = "#3d59a1" }
+
+syntect_theme = ""
+
+[tabs]
+active    = { fg = "#1a1b26", bg = "#7aa2f7", bold = true }
+inactive  = { fg = "#787c99", bg = "#16161e" }
+
+[status]
+progress_label  = { fg = "#c0caf5", bold = true }
+progress_normal = { fg = "#7aa2f7", bg = "#16161e" }
+progress_error  = { fg = "#f7768e", bg = "#16161e" }
+perm_sep        = { fg = "#787c99" }
+perm_type       = { fg = "#9ece6a" }
+perm_read       = { fg = "#e0af68" }
+perm_write      = { fg = "#f7768e" }
+perm_exec       = { fg = "#7aa2f7" }
+
+[mode]
+normal_main = { fg = "#1a1b26", bg = "#7aa2f7", bold = true }
+select_main = { fg = "#1a1b26", bg = "#9ece6a", bold = true }
+unset_main  = { fg = "#1a1b26", bg = "#bb9af7", bold = true }
+
+[input]
+border   = { fg = "#7aa2f7" }
+title    = { fg = "#c0caf5" }
+value    = { fg = "#a9b1d6" }
+selected = { reversed = true }
+
+[pick]
+border   = { fg = "#7aa2f7" }
+active   = { fg = "#bb9af7", bold = true }
+inactive = { fg = "#787c99" }
+
+[tasks]
+border  = { fg = "#7aa2f7" }
+title   = { fg = "#c0caf5" }
+hovered = { bg = "#2d3f76", bold = true }
+
+[which]
+mask            = { bg = "#16161e" }
+cand            = { fg = "#7aa2f7" }
+rest            = { fg = "#787c99" }
+desc            = { fg = "#9d7cd8" }
+separator       = "  "
+separator_style = { fg = "#3d59a1" }
+
+[help]
+on      = { fg = "#bb9af7" }
+run     = { fg = "#7aa2f7" }
+desc    = { fg = "#787c99" }
+hovered = { bg = "#2d3f76", bold = true }
+footer  = { fg = "#1a1b26", bg = "#a9b1d6" }
+
+[filetype]
+rules = [
+	# ===== HIDDEN FILES (dotfiles) =====
+	{ url = ".*", fg = "#787c99", italic = true },
+
+	# ===== SYSTEM/SPECIAL DIRECTORIES =====
+	{ url = ".git/", fg = "#f7768e", bold = true },
+	{ url = ".github/", fg = "#787c99" },
+	{ url = ".vscode/", fg = "#7aa2f7" },
+	{ url = ".idea/", fg = "#bb9af7" },
+	{ url = "node_modules/", fg = "#9ece6a", dim = true },
+	{ url = ".cache/", fg = "#787c99", dim = true },
+	{ url = ".npm/", fg = "#f7768e", dim = true },
+	{ url = ".cargo/", fg = "#ff9e64", dim = true },
+	{ url = "dist/", fg = "#e0af68" },
+	{ url = "build/", fg = "#e0af68" },
+	{ url = "target/", fg = "#e0af68" },
+	{ url = "__pycache__/", fg = "#787c99", dim = true },
+	{ url = ".pytest_cache/", fg = "#787c99", dim = true },
+	{ url = "vendor/", fg = "#bb9af7", dim = true },
+
+	# ===== COMMON DIRECTORIES =====
+	{ url = "Downloads/", fg = "#7aa2f7", bold = true },
+	{ url = "Documents/", fg = "#7dcfff", bold = true },
+	{ url = "Desktop/", fg = "#bb9af7", bold = true },
+	{ url = "Pictures/", fg = "#2ac3de", bold = true },
+	{ url = "Music/", fg = "#ff9e64", bold = true },
+	{ url = "Videos/", fg = "#f7768e", bold = true },
+	{ url = "src/", fg = "#7aa2f7", bold = true },
+	{ url = "test/", fg = "#9ece6a" },
+	{ url = "tests/", fg = "#9ece6a" },
+	{ url = "docs/", fg = "#7dcfff" },
+
+	# ===== PROGRAMMING LANGUAGES =====
+	# Rust
+	{ mime = "*.rs", fg = "#ff9e64" },
+	{ mime = "Cargo.toml", fg = "#ff9e64", bold = true },
+	{ mime = "Cargo.lock", fg = "#787c99" },
+
+	# JavaScript/TypeScript
+	{ mime = "*.js", fg = "#e0af68" },
+	{ mime = "*.jsx", fg = "#e0af68" },
+	{ mime = "*.ts", fg = "#7aa2f7" },
+	{ mime = "*.tsx", fg = "#7aa2f7" },
+	{ mime = "*.mjs", fg = "#e0af68" },
+	{ mime = "*.cjs", fg = "#e0af68" },
+	{ mime = "package.json", fg = "#9ece6a", bold = true },
+	{ mime = "package-lock.json", fg = "#787c99" },
+	{ mime = "tsconfig.json", fg = "#7aa2f7" },
+
+	# Python
+	{ mime = "*.py", fg = "#7aa2f7" },
+	{ mime = "*.pyx", fg = "#7aa2f7" },
+	{ mime = "*.pyd", fg = "#7aa2f7" },
+	{ mime = "requirements.txt", fg = "#7aa2f7", bold = true },
+	{ mime = "setup.py", fg = "#7aa2f7", bold = true },
+	{ mime = "pyproject.toml", fg = "#7aa2f7", bold = true },
+
+	# Go
+	{ mime = "*.go", fg = "#7dcfff" },
+	{ mime = "go.mod", fg = "#7dcfff", bold = true },
+	{ mime = "go.sum", fg = "#787c99" },
+
+	# Java/Kotlin
+	{ mime = "*.java", fg = "#f7768e" },
+	{ mime = "*.kt", fg = "#bb9af7" },
+	{ mime = "*.gradle", fg = "#9ece6a" },
+	{ mime = "pom.xml", fg = "#f7768e", bold = true },
+
+	# C/C++
+	{ mime = "*.c", fg = "#7aa2f7" },
+	{ mime = "*.h", fg = "#7dcfff" },
+	{ mime = "*.cpp", fg = "#f7768e" },
+	{ mime = "*.hpp", fg = "#ff9e64" },
+	{ mime = "*.cc", fg = "#f7768e" },
+	{ mime = "CMakeLists.txt", fg = "#9ece6a", bold = true },
+	{ mime = "Makefile", fg = "#9ece6a", bold = true },
+
+	# Swift
+	{ mime = "*.swift", fg = "#ff9e64" },
+
+	# Ruby
+	{ mime = "*.rb", fg = "#f7768e" },
+	{ mime = "Gemfile", fg = "#f7768e", bold = true },
+
+	# Shell scripts
+	{ mime = "*.sh", fg = "#9ece6a" },
+	{ mime = "*.bash", fg = "#9ece6a" },
+	{ mime = "*.zsh", fg = "#9ece6a" },
+	{ mime = "*.fish", fg = "#9ece6a" },
+
+	# ===== WEB DEVELOPMENT =====
+	{ mime = "*.html", fg = "#f7768e" },
+	{ mime = "*.htm", fg = "#f7768e" },
+	{ mime = "*.css", fg = "#7aa2f7" },
+	{ mime = "*.scss", fg = "#bb9af7" },
+	{ mime = "*.sass", fg = "#bb9af7" },
+	{ mime = "*.less", fg = "#bb9af7" },
+	{ mime = "*.vue", fg = "#9ece6a" },
+	{ mime = "*.svelte", fg = "#ff9e64" },
+
+	# ===== CONFIG FILES =====
+	{ mime = "*.toml", fg = "#9d7cd8" },
+	{ mime = "*.yaml", fg = "#9d7cd8" },
+	{ mime = "*.yml", fg = "#9d7cd8" },
+	{ mime = "*.json", fg = "#e0af68" },
+	{ mime = "*.xml", fg = "#ff9e64" },
+	{ mime = "*.ini", fg = "#787c99" },
+	{ mime = "*.conf", fg = "#787c99" },
+	{ mime = "*.cfg", fg = "#787c99" },
+	{ mime = "*.env", fg = "#e0af68", bold = true },
+	{ mime = ".env.*", fg = "#e0af68" },
+	{ mime = "*.config", fg = "#9d7cd8" },
+	{ mime = "Dockerfile", fg = "#7aa2f7", bold = true },
+	{ mime = "docker-compose.yml", fg = "#7aa2f7", bold = true },
+
+	# ===== VERSION CONTROL =====
+	{ mime = ".gitignore", fg = "#f7768e" },
+	{ mime = ".gitattributes", fg = "#f7768e" },
+	{ mime = ".gitmodules", fg = "#f7768e" },
+
+	# ===== DOCUMENTS =====
+	{ mime = "*.pdf", fg = "#f7768e", bold = true },
+	{ mime = "*.doc", fg = "#7aa2f7" },
+	{ mime = "*.docx", fg = "#7aa2f7" },
+	{ mime = "*.xls", fg = "#9ece6a" },
+	{ mime = "*.xlsx", fg = "#9ece6a" },
+	{ mime = "*.ppt", fg = "#ff9e64" },
+	{ mime = "*.pptx", fg = "#ff9e64" },
+	{ mime = "*.odt", fg = "#7aa2f7" },
+	{ mime = "*.ods", fg = "#9ece6a" },
+
+	# ===== TEXT/MARKDOWN =====
+	{ mime = "*.md", fg = "#7dcfff", bold = true },
+	{ mime = "*.markdown", fg = "#7dcfff" },
+	{ mime = "*.txt", fg = "#a9b1d6" },
+	{ mime = "*.rst", fg = "#7dcfff" },
+	{ mime = "README*", fg = "#e0af68", bold = true },
+	{ mime = "LICENSE*", fg = "#e0af68", bold = true },
+	{ mime = "CHANGELOG*", fg = "#7dcfff" },
+
+	# ===== IMAGES =====
+	{ mime = "*.png", fg = "#bb9af7" },
+	{ mime = "*.jpg", fg = "#bb9af7" },
+	{ mime = "*.jpeg", fg = "#bb9af7" },
+	{ mime = "*.gif", fg = "#bb9af7" },
+	{ mime = "*.bmp", fg = "#bb9af7" },
+	{ mime = "*.svg", fg = "#e0af68" },
+	{ mime = "*.ico", fg = "#bb9af7" },
+	{ mime = "*.webp", fg = "#bb9af7" },
+
+	# ===== VIDEOS =====
+	{ mime = "*.mp4", fg = "#f7768e" },
+	{ mime = "*.mkv", fg = "#f7768e" },
+	{ mime = "*.avi", fg = "#f7768e" },
+	{ mime = "*.mov", fg = "#f7768e" },
+	{ mime = "*.webm", fg = "#f7768e" },
+	{ mime = "*.flv", fg = "#f7768e" },
+
+	# ===== AUDIO =====
+	{ mime = "*.mp3", fg = "#ff9e64" },
+	{ mime = "*.flac", fg = "#ff9e64" },
+	{ mime = "*.wav", fg = "#ff9e64" },
+	{ mime = "*.ogg", fg = "#ff9e64" },
+	{ mime = "*.m4a", fg = "#ff9e64" },
+	{ mime = "*.opus", fg = "#ff9e64" },
+
+	# ===== ARCHIVES =====
+	{ mime = "*.zip", fg = "#f7768e", bold = true },
+	{ mime = "*.tar", fg = "#f7768e" },
+	{ mime = "*.gz", fg = "#f7768e" },
+	{ mime = "*.bz2", fg = "#f7768e" },
+	{ mime = "*.xz", fg = "#f7768e" },
+	{ mime = "*.7z", fg = "#f7768e" },
+	{ mime = "*.rar", fg = "#f7768e" },
+	{ mime = "*.tgz", fg = "#f7768e" },
+	{ mime = "*.tar.gz", fg = "#f7768e" },
+	{ mime = "*.tar.bz2", fg = "#f7768e" },
+
+	# ===== DATABASES =====
+	{ mime = "*.db", fg = "#9ece6a" },
+	{ mime = "*.sqlite", fg = "#9ece6a" },
+	{ mime = "*.sqlite3", fg = "#9ece6a" },
+	{ mime = "*.sql", fg = "#7aa2f7" },
+
+	# ===== FONTS =====
+	{ mime = "*.ttf", fg = "#787c99" },
+	{ mime = "*.otf", fg = "#787c99" },
+	{ mime = "*.woff", fg = "#787c99" },
+	{ mime = "*.woff2", fg = "#787c99" },
+
+	# ===== COMPILED/BINARY =====
+	{ mime = "*.o", fg = "#787c99", dim = true },
+	{ mime = "*.so", fg = "#787c99", dim = true },
+	{ mime = "*.a", fg = "#787c99", dim = true },
+	{ mime = "*.dll", fg = "#787c99", dim = true },
+	{ mime = "*.exe", fg = "#9ece6a", bold = true },
+	{ mime = "*.app", fg = "#9ece6a", bold = true },
+
+	# ===== LOGS =====
+	{ mime = "*.log", fg = "#787c99", italic = true },
+
+	# ===== FALLBACK =====
+	{ mime = "*", fg = "#a9b1d6" },
+	{ mime = "*/", fg = "#7aa2f7", bold = true },
+]
+
+[icon]
+globs = [
+	# Directories get folder icon
+	{ url = "*/", text = "" },
+
+	# Special directories
+	{ url = ".git/", text = "" },
+	{ url = ".github/", text = "" },
+	{ url = "node_modules/", text = "" },
+	{ url = "src/", text = "" },
+	{ url = "test/", text = "󰙨" },
+	{ url = "tests/", text = "󰙨" },
+	{ url = "docs/", text = "" },
+	{ url = ".cargo/", text = "" },
+
+	# Common user directories
+	{ url = "Downloads/", text = "" },
+	{ url = "Documents/", text = "" },
+	{ url = "Desktop/", text = "" },
+	{ url = "Pictures/", text = "" },
+	{ url = "Music/", text = "" },
+	{ url = "Videos/", text = "" },
+
+	# Programming languages
+	{ url = "*.rs", text = "" },
+	{ url = "*.js", text = "" },
+	{ url = "*.ts", text = "" },
+	{ url = "*.jsx", text = "" },
+	{ url = "*.tsx", text = "" },
+	{ url = "*.py", text = "" },
+	{ url = "*.go", text = "" },
+	{ url = "*.java", text = "" },
+	{ url = "*.c", text = "" },
+	{ url = "*.cpp", text = "" },
+	{ url = "*.h", text = "" },
+	{ url = "*.swift", text = "" },
+	{ url = "*.rb", text = "" },
+	{ url = "*.php", text = "" },
+
+	# Web
+	{ url = "*.html", text = "" },
+	{ url = "*.css", text = "" },
+	{ url = "*.scss", text = "" },
+	{ url = "*.vue", text = "" },
+
+	# Config
+	{ url = "*.json", text = "" },
+	{ url = "*.toml", text = "" },
+	{ url = "*.yaml", text = "" },
+	{ url = "*.yml", text = "" },
+	{ url = "*.xml", text = "" },
+
+	# Documents
+	{ url = "*.md", text = "" },
+	{ url = "*.pdf", text = "" },
+	{ url = "*.txt", text = "" },
+
+	# Media
+	{ url = "*.png", text = "" },
+	{ url = "*.jpg", text = "" },
+	{ url = "*.jpeg", text = "" },
+	{ url = "*.gif", text = "" },
+	{ url = "*.svg", text = "" },
+	{ url = "*.mp4", text = "" },
+	{ url = "*.mp3", text = "" },
+
+	# Archives
+	{ url = "*.zip", text = "" },
+	{ url = "*.tar", text = "" },
+	{ url = "*.gz", text = "" },
+	{ url = "*.7z", text = "" },
+
+	# Special files
+	{ url = "Dockerfile", text = "" },
+	{ url = "package.json", text = "" },
+	{ url = "Cargo.toml", text = "" },
+	{ url = "Makefile", text = "" },
+	{ url = ".gitignore", text = "" },
+	{ url = "README*", text = "" },
+	{ url = "LICENSE*", text = "" },
+
+	# Default
+	{ url = "*", text = "" },
+]
