@@ -2,6 +2,9 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap.set
 
+-- Rename TABs
+vim.keymap.set("n", "<leader>tr", ":TabooRename ")
+
 -- LSP
 keymap("n", "<leader>la", function()
   vim.lsp.buf.code_action({ apply = true })
