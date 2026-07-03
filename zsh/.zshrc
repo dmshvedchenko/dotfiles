@@ -52,6 +52,61 @@ alias digg='dig @1.1.1.1'
 alias dig8='dig +short @8.8.8.8'
 alias diglocal='dig +short @192.168.178.1'
 
+alias brewup='brew update && brew upgrade'
+
+# -------------------------------------------
+# Suffix Aliases - Open Files by Extension
+# -------------------------------------------
+# Just type the filename to open it with the associated program
+alias -s json=jless
+alias -s py='$EDITOR'
+alias -s yaml='$EDITOR'
+alias -s yml='$EDITOR'
+
+# -------------------------------------------
+# Global Aliases - Use Anywhere in Commands
+# -------------------------------------------
+# Redirect stderr to /dev/null
+alias -g NE='2>/dev/null'
+
+# Redirect stdout to /dev/null
+alias -g NO='>/dev/null'
+
+# Redirect both stdout and stderr to /dev/null
+alias -g NUL='>/dev/null 2>&1'
+
+# Pipe to jq
+alias -g JQ='| jq'
+
+# Pipe to less
+alias -g L='| less'
+
+# Copy output to clipboard (macOS)
+alias -g C='| pbcopy'
+
+# -------------------------------------------
+# zmv - Advanced Batch Rename/Move
+# -------------------------------------------
+# Enable zmv
+autoload -Uz zmv
+
+# Usage examples:
+# zmv '(*).log' '$1.txt'           # Rename .log to .txt
+# zmv -w '*.log' '*.txt'           # Same thing, simpler syntax
+# zmv -n '(*).log' '$1.txt'        # Dry run (preview changes)
+# zmv -i '(*).log' '$1.txt'        # Interactive mode (confirm each)
+
+# Helpful aliases for zmv
+alias zcp='zmv -C'  # Copy with patterns
+alias zln='zmv -L'  # Link with patterns
+
+# -------------------------------------------
+# Named Directories - Bookmark Folders
+# -------------------------------------------
+# Access with ~name syntax, e.g., cd ~yt or ls ~yt
+hash -d dl=~/Downloads
+# Add your own commonly used directories here
+
 icloud() {
   cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs/MyFiles/" || return 1
 }
@@ -77,6 +132,49 @@ tmp() {
   dir="$(mktemp -d /tmp/tmp.XXXXXX)" || return 1
   cd "$dir" || return 1
 }
+
+mysocks() {
+  ssh -N -D 127.0.0.1:1080 my-hetzner-vpn
+}
+
+# -------------------------------------------
+# Custom Widgets
+# -------------------------------------------
+# Clear screen but keep current command buffer
+function clear-screen-and-scrollback() {
+  echoti civis >"$TTY"
+  printf '%b' '\e[H\e[2J\e[3J' >"$TTY"
+  echoti cnorm >"$TTY"
+  zle redisplay
+}
+zle -N clear-screen-and-scrollback
+bindkey '^xl' clear-screen-and-scrollback
+
+# Copy current command buffer to clipboard (macOS)
+function copy-buffer-to-clipboard() {
+  echo -n "$BUFFER" | pbcopy
+  zle -M "Copied to clipboard"
+}
+zle -N copy-buffer-to-clipboard
+bindkey '^xc' copy-buffer-to-clipboard
+
+# For Linux with wl-copy:
+# function copy-buffer-to-clipboard() {
+#   echo -n "$BUFFER" | wl-copy
+#   zle -M "Copied to clipboard"
+# }
+
+# -------------------------------------------
+# Hotkey Insertions - Text Snippets
+# -------------------------------------------
+# Insert git commit template (Ctrl+X, G, C)
+# \C-b moves cursor back one position
+bindkey -s '^xgc' 'git commit -m ""\C-b'
+
+# More examples:
+bindkey -s '^xgp' 'git push origin '
+bindkey -s '^xgs' 'git status\n'
+bindkey -s '^xgl' 'git log --oneline -n 10\n'
 
 
 # =========================
@@ -250,6 +348,43 @@ k9() {
 
 
 # =========================
+# ZSH tricks
+# =========================
+
+# -------------------------------------------
+# Edit Command Buffer
+# -------------------------------------------
+# Open the current command in your $EDITOR (e.g., neovim)
+# Press Ctrl+X followed by Ctrl+E to trigger
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+
+# -------------------------------------------
+# chpwd Hook - Run Commands on Directory Change
+# -------------------------------------------
+# NOTE: Only one chpwd hook can be defined at once
+# To merge them, use add-zsh-hook which is mentioned below
+
+# Example: List directory contents on cd
+
+chpwd() {
+  ls
+}
+
+
+# -------------------------------------------
+# Yazi 
+# -------------------------------------------
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	command rm -f -- "$tmp"
+}
+
+# =========================
 # Powerlevel9k
 # =========================
 
@@ -298,6 +433,13 @@ export POWERLEVEL9K_FAIL_ICON="\uf165"
 export POWERLEVEL9K_OK_ICON="\uf164"
 export POWERLEVEL9K_VCS_FOREGROUND='051'
 
+# =========================
+# Homebrew completions
+# Must be before Oh My Zsh / compinit
+# =========================
+if command -v brew >/dev/null 2>&1; then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
 
 # =========================
 # Oh My Zsh
@@ -311,7 +453,6 @@ else
   echo "oh-my-zsh not found: $ZSH/oh-my-zsh.sh"
 fi
 
-
 # =========================
 # envman / nvm
 # =========================
@@ -322,10 +463,15 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
 
-
 # =========================
 # Completions
 # =========================
+
+if command -v carapace >/dev/null 2>&1; then
+  export CARAPACE_BRIDGES='zsh,fish,bash'
+  zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+  source <(carapace _carapace)
+fi
 
 if command -v fzf >/dev/null 2>&1; then
   source <(fzf --zsh)
@@ -338,7 +484,6 @@ fi
 if command -v oc >/dev/null 2>&1; then
   source <(oc completion zsh)
 fi
-
 
 # =========================
 # Syntax highlighting
