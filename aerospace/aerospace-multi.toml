@@ -14,16 +14,17 @@ default-root-container-orientation = 'auto'
 
 # Лучше выключить, чтобы не усиливать прыжки фокуса/мыши
 on-focused-monitor-changed = []
+on-focus-changed = ['move-mouse window-lazy-center']
 
 automatically-unhide-macos-hidden-apps = false
 
 persistent-workspaces = [
-  "1", "2", "3", "4", "5", "6", "7", "8", "9",
+  # "1", "2", "3", "4", "5", "6", "7", "8", "9",
   "A", "B", "C", "D", "E", "F", "G", "I", "M", "N", "O", "P", "Q",
   "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
 
   # Profile workspaces
-  "N1", "N2", "N3",
+  "P1", "P2", "P3",
   "C1", "C2", "C3"
 ]
 
@@ -50,9 +51,9 @@ on-mode-changed = []
 # 3    = right Dell
 
 [workspace-to-monitor-force-assignment]
-N1 = 1
-N2 = 'main'
-N3 = 3
+P1 = 1
+P2 = 'main'
+P3 = 3
 
 C1 = 1
 C2 = 'main'
@@ -74,10 +75,10 @@ A = 'main'
     alt-comma = 'layout accordion horizontal vertical'
 
     # Focus
-    # alt-h = 'focus left'
-    # alt-j = 'focus down'
-    # alt-k = 'focus up'
-    # alt-l = 'focus right'
+    alt-h = 'focus left'
+    alt-j = 'focus down'
+    alt-k = 'focus up'
+    alt-l = 'focus right'
 
     # Move windows
     alt-shift-h = 'move left'
@@ -86,19 +87,24 @@ A = 'main'
     alt-shift-l = 'move right'
 
     # Resize
-    alt-minus = 'resize smart -50'
-    alt-equal = 'resize smart +50'
+    # alt-minus = 'resize smart -50'
+    # alt-equal = 'resize smart +50'
+    # Resize windows
+    alt-ctrl-h = 'resize width -50'
+    alt-ctrl-l = 'resize width +50'
+    alt-ctrl-j = 'resize height +50'
+    alt-ctrl-k = 'resize height -50'
 
     # Standard workspaces
-    alt-1 = 'workspace 1'
-    alt-2 = 'workspace 2'
-    alt-3 = 'workspace 3'
-    alt-4 = 'workspace 4'
-    alt-5 = 'workspace 5'
-    alt-6 = 'workspace 6'
-    alt-7 = 'workspace 7'
-    alt-8 = 'workspace 8'
-    alt-9 = 'workspace 9'
+    # alt-1 = 'workspace 1'
+    # alt-2 = 'workspace 2'
+    # alt-3 = 'workspace 3'
+    # alt-4 = 'workspace 4'
+    # alt-5 = 'workspace 5'
+    # alt-6 = 'workspace 6'
+    # alt-7 = 'workspace 7'
+    # alt-8 = 'workspace 8'
+    # alt-9 = 'workspace 9'
 
     alt-a = 'workspace A'
     alt-b = 'workspace B'
@@ -109,43 +115,41 @@ A = 'main'
     alt-g = 'workspace G'
     alt-i = 'workspace I'
     alt-m = 'workspace M'
-    # alt-n is used below as a profile hotkey
+    #alt-n = 'workspace N2'
     alt-o = 'workspace O'
-    alt-p = 'workspace P'
+    #alt-p = 'workspace P'
     alt-q = 'workspace Q'
     alt-r = 'workspace R'
     alt-s = 'workspace S'
     alt-t = 'workspace T'
     alt-u = 'workspace U'
     alt-v = 'workspace V'
-    alt-w = 'workspace W'
+    #alt-w = 'workspace W'
     alt-x = 'workspace X'
     alt-y = 'workspace Y'
     alt-z = 'workspace Z'
 
     # Move focused window to standard workspaces
-    alt-shift-1 = 'move-node-to-workspace 1'
-    alt-shift-2 = 'move-node-to-workspace 2'
-    alt-shift-3 = 'move-node-to-workspace 3'
-    alt-shift-4 = 'move-node-to-workspace 4'
-    alt-shift-5 = 'move-node-to-workspace 5'
-    alt-shift-6 = 'move-node-to-workspace 6'
-    alt-shift-7 = 'move-node-to-workspace 7'
-    alt-shift-8 = 'move-node-to-workspace 8'
-    alt-shift-9 = 'move-node-to-workspace 9'
+    # alt-shift-1 = 'move-node-to-workspace 1'
+    # alt-shift-2 = 'move-node-to-workspace 2'
+    # alt-shift-3 = 'move-node-to-workspace 3'
+    # alt-shift-4 = 'move-node-to-workspace 4'
+    # alt-shift-5 = 'move-node-to-workspace 5'
+    # alt-shift-6 = 'move-node-to-workspace 6'
+    # alt-shift-7 = 'move-node-to-workspace 7'
+    # alt-shift-8 = 'move-node-to-workspace 8'
+    # alt-shift-9 = 'move-node-to-workspace 9'
 
     alt-shift-a = 'move-node-to-workspace A'
     alt-shift-b = 'move-node-to-workspace B'
-    # alt-shift-c disabled to avoid moving windows to old workspace C
-    # alt-shift-c = 'move-node-to-workspace C'
+    alt-shift-c = 'move-node-to-workspace C2'
     alt-shift-d = 'move-node-to-workspace D'
     alt-shift-e = 'move-node-to-workspace E'
     alt-shift-f = 'move-node-to-workspace F'
     alt-shift-g = 'move-node-to-workspace G'
     alt-shift-i = 'move-node-to-workspace I'
     alt-shift-m = 'move-node-to-workspace M'
-    # alt-shift-n disabled to avoid moving windows to old workspace N
-    # alt-shift-n = 'move-node-to-workspace N'
+    alt-shift-n = 'move-node-to-workspace P2'
     alt-shift-o = 'move-node-to-workspace O'
     alt-shift-p = 'move-node-to-workspace P'
     alt-shift-q = 'move-node-to-workspace Q'
@@ -160,9 +164,9 @@ A = 'main'
     alt-shift-z = 'move-node-to-workspace Z'
 
     # Move focused window to profile workspaces
-    alt-shift-leftSquareBracket = 'move-node-to-workspace N1'
-    alt-shift-rightSquareBracket = 'move-node-to-workspace N2'
-    alt-shift-backslash = 'move-node-to-workspace N3'
+    alt-shift-leftSquareBracket = 'move-node-to-workspace P1'
+    alt-shift-rightSquareBracket = 'move-node-to-workspace P2'
+    alt-shift-backslash = 'move-node-to-workspace P3'
 
     ctrl-shift-leftSquareBracket = 'move-node-to-workspace C1'
     ctrl-shift-rightSquareBracket = 'move-node-to-workspace C2'
@@ -183,14 +187,14 @@ A = 'main'
     # =========================
 
     # alt+n profile:
-    # left  -> N1 -> Teams
-    # main  -> N2 -> Safari
-    # right -> N3 -> Sublime Text
-    alt-n = [
-      'workspace N1',
-      'workspace N2',
-      'workspace N3',
-      'workspace N2'
+    # left  -> P1 -> Teams
+    # main  -> P2 -> Safari
+    # right -> P3 -> Sublime Text
+    alt-p = [
+      'workspace P1',
+      'workspace P2',
+      'workspace P3',
+      'workspace P2'
     ]
 
     # alt+c profile:
@@ -234,56 +238,48 @@ A = 'main'
 if.app-id = 'ru.keepcoder.Telegram'
 run = [
   'layout floating',
-  'move-node-to-workspace N2'
 ]
 
 [[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
 run = [
   'layout floating',
-  'move-node-to-workspace N2'
 ]
 
 [[on-window-detected]]
 if.app-id = 'com.culturedcode.ThingsMac'
 run = [
   'layout floating',
-  'move-node-to-workspace N2'
 ]
 
 [[on-window-detected]]
 if.app-id = 'com.keepassium.ios.pro'
 run = [
   'layout floating',
-  'move-node-to-workspace N2'
 ]
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Notes'
 run = [
   'layout floating',
-  'move-node-to-workspace N2'
 ]
 
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
 run = [
   'layout floating',
-  'move-node-to-workspace N3'
 ]
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Home'
 run = [
   'layout floating',
-  'move-node-to-workspace N2'
 ]
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Passwords'
 run = [
   'layout floating',
-  'move-node-to-workspace N2'
 ]
 
 [[on-window-detected]]
@@ -312,15 +308,15 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.teams2'
-run = 'move-node-to-workspace N1'
+run = 'move-node-to-workspace P1'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'
-run = 'move-node-to-workspace N2'
+run = 'move-node-to-workspace P2'
 
 [[on-window-detected]]
 if.app-id = 'com.sublimetext.4'
-run = 'move-node-to-workspace N3'
+run = 'move-node-to-workspace P3'
 
 
 [[on-window-detected]]
