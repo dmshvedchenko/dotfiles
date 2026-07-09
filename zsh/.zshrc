@@ -24,6 +24,16 @@ export ZSH="$HOME/.oh-my-zsh"
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export DEFAULT_USER="dima"
 
+# =========================
+# Editor
+# =========================
+
+export EDITOR="nvim"
+export VISUAL="nvim"
+export GIT_EDITOR="nvim"
+export BAT_THEME="Dracula"
+export EZA_CONFIG_DIR="$HOME/.config/eza"
+
 [[ -f "$HOME/.config/private/fritzbox.env" ]] && source "$HOME/.config/private/fritzbox.env"
 
 
@@ -33,7 +43,7 @@ export DEFAULT_USER="dima"
 
 # Remove old aliases before defining functions.
 # This makes repeated `source ~/.zshrc` safe.
-unalias flushdns icloud dotfiles kuber kstage kprod tmp officereboot gartenreboot wzreboot flurreboot fritzreboot k9s k9 2>/dev/null
+unalias flushdns icloud dotfiles kuber kstage kprod tmp officereboot gartenreboot wzreboot flurreboot fritzreboot k9s k9 ls ll la lla 2>/dev/null
 unfunction flushdns icloud dotfiles kuber kstage kprod tmp officereboot gartenreboot wzreboot flurreboot fritzreboot k9s k9 2>/dev/null
 
 flushdns() {
@@ -43,6 +53,8 @@ flushdns() {
   echo "DNS cache flushed"
 }
 
+alias cat='bat'
+alias cd='z'
 alias tmux='tmux -u'
 alias vim='/opt/homebrew/bin/nvim'
 alias vi='/opt/homebrew/bin/nvim'
@@ -62,6 +74,7 @@ alias -s json=jless
 alias -s py='$EDITOR'
 alias -s yaml='$EDITOR'
 alias -s yml='$EDITOR'
+alias -s txt='bat'
 
 # -------------------------------------------
 # Global Aliases - Use Anywhere in Commands
@@ -369,7 +382,8 @@ bindkey '^x^e' edit-command-line
 # Example: List directory contents on cd
 
 chpwd() {
-  ls
+  #ls
+  eza --icons --color=always --long --git
 }
 
 
@@ -474,8 +488,27 @@ if command -v carapace >/dev/null 2>&1; then
 fi
 
 if command -v fzf >/dev/null 2>&1; then
+  export FZF_CTRL_T_OPTS='--preview "bat --style=numbers --color=always --line-range :500 {}"'
+  export FZF_ALT_C_OPTS='--preview "eza --tree --color=always {} | head -200"'
   source <(fzf --zsh)
 fi
+
+# ---- Zoxide (better cd)----
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init zsh)"
+fi
+
+_fzf_comprun() {
+  local command="$1"
+  shift
+
+  case "$command" in
+    cd)             fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset)   fzf --preview "eval 'echo \$' {}" "$@" ;;
+    ssh)            fzf --preview 'dig {}' "$@" ;;
+    *)              fzf --preview 'bat -n --color=always --line-range :500 {}' "$@" ;;
+  esac
+}
 
 if command -v kubectl >/dev/null 2>&1; then
   source <(kubectl completion zsh)
@@ -494,4 +527,18 @@ if [[ -f "/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
   source "/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 elif [[ -f "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
   source "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
+
+# =========================
+# eza aliases
+# Must be after Oh My Zsh
+# =========================
+
+if command -v eza >/dev/null 2>&1; then
+  unalias ls ll la lla 2>/dev/null
+
+  alias ls='eza --icons --color=always --long --git'
+  alias ll='eza --icons --color=always --long --git'
+  alias la='eza --icons --color=always --long --git --all'
+  alias lla='eza --icons --color=always --long --git --all'
 fi
