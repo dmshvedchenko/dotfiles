@@ -10,4 +10,5 @@ vim.lsp.enable({
     "ltex_plus",
     "systemd_lsp",
     "jsonls",
+    "terraformls"
 })

@@ -20,6 +20,7 @@ return {
           "ltex_plus",
           "systemd_lsp",
           "jsonls",
+          "terraformls"
         },
       })
     end,

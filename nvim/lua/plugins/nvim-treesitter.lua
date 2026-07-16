@@ -29,6 +29,8 @@ return {
           "vim",
           "vimdoc",
           "yaml",
+          "terraform",
+          "hcl",
           "dockerfile",
           "gitignore",
           "make",
