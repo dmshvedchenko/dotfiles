@@ -22,6 +22,7 @@ return {
     },
     spec = {
       {
+        { "<leader>m", group = "Markdown" },
         mode = { "n", "v" },
         { "<leader>c", group = "Copilot" },
         { "<leader>f", group = "Find" },
