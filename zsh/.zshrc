@@ -35,6 +35,7 @@ export BAT_THEME="Dracula"
 export EZA_CONFIG_DIR="$HOME/.config/eza"
 
 [[ -f "$HOME/.config/private/fritzbox.env" ]] && source "$HOME/.config/private/fritzbox.env"
+[[ -f "$HOME/.config/private/bestex-terraform.env" ]] && source "$HOME/.config/private/bestex-terraform.env"
 
 
 # =========================
@@ -129,7 +130,7 @@ dotfiles() {
 }
 
 kuber() {
-    cd "$HOME/nmedia/kubernetes" || return 1 
+    cd "$HOME/nmedia/kubernetes" || return 1 
 }
 
 kstage() {
@@ -149,46 +150,6 @@ tmp() {
 mysocks() {
   ssh -N -D 127.0.0.1:1080 my-hetzner-vpn
 }
-
-# -------------------------------------------
-# Custom Widgets
-# -------------------------------------------
-# Clear screen but keep current command buffer
-function clear-screen-and-scrollback() {
-  echoti civis >"$TTY"
-  printf '%b' '\e[H\e[2J\e[3J' >"$TTY"
-  echoti cnorm >"$TTY"
-  zle redisplay
-}
-zle -N clear-screen-and-scrollback
-bindkey '^xl' clear-screen-and-scrollback
-
-# Copy current command buffer to clipboard (macOS)
-function copy-buffer-to-clipboard() {
-  echo -n "$BUFFER" | pbcopy
-  zle -M "Copied to clipboard"
-}
-zle -N copy-buffer-to-clipboard
-bindkey '^xc' copy-buffer-to-clipboard
-
-# For Linux with wl-copy:
-# function copy-buffer-to-clipboard() {
-#   echo -n "$BUFFER" | wl-copy
-#   zle -M "Copied to clipboard"
-# }
-
-# -------------------------------------------
-# Hotkey Insertions - Text Snippets
-# -------------------------------------------
-# Insert git commit template (Ctrl+X, G, C)
-# \C-b moves cursor back one position
-bindkey -s '^xgc' 'git commit -m ""\C-b'
-
-# More examples:
-bindkey -s '^xgp' 'git push origin '
-bindkey -s '^xgs' 'git status\n'
-bindkey -s '^xgl' 'git log --oneline -n 10\n'
-
 
 # =========================
 # FritzBox helpers
@@ -466,6 +427,46 @@ if [[ -f "$ZSH/oh-my-zsh.sh" ]]; then
 else
   echo "oh-my-zsh not found: $ZSH/oh-my-zsh.sh"
 fi
+
+# -------------------------------------------
+# Custom Widgets
+# -------------------------------------------
+# Clear screen but keep current command buffer
+function clear-screen-and-scrollback() {
+  echoti civis >"$TTY"
+  printf '%b' '\e[H\e[2J\e[3J' >"$TTY"
+  echoti cnorm >"$TTY"
+  zle redisplay
+}
+zle -N clear-screen-and-scrollback
+bindkey '^xl' clear-screen-and-scrollback
+
+# Copy current command buffer to clipboard (macOS)
+function copy-buffer-to-clipboard() {
+  echo -n "$BUFFER" | pbcopy
+  zle -M "Copied to clipboard"
+}
+zle -N copy-buffer-to-clipboard
+bindkey '^xc' copy-buffer-to-clipboard
+
+# For Linux with wl-copy:
+# function copy-buffer-to-clipboard() {
+#   echo -n "$BUFFER" | wl-copy
+#   zle -M "Copied to clipboard"
+# }
+
+# -------------------------------------------
+# Hotkey Insertions - Text Snippets
+# -------------------------------------------
+# Insert git commit template (Ctrl+X, G, C)
+# \C-b moves cursor back one position
+bindkey -s '^xgc' 'git commit -m ""\C-b'
+
+# More examples:
+bindkey -s '^xgp' 'git push origin '
+bindkey -s '^xgs' 'git status\n'
+bindkey -s '^xgl' 'git log --oneline -n 10\n'
+
 
 # =========================
 # envman / nvm
