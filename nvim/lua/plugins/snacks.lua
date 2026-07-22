@@ -37,5 +37,23 @@ return {
         },
       },
     },
+    keys = {
+      {
+         "<leader>tt",
+          function()
+            Snacks.terminal.toggle(nil, {
+              cwd = vim.fn.getcwd(),
+              win = {
+                position = "float",
+                border = "rounded",
+                width = 0.75,
+                height = 0.75,
+              },
+            })
+          end,
+          desc = "Terminal: Toggle Floating",
+          mode = { "n", "t" },
+        },
+       },
   }
 }
